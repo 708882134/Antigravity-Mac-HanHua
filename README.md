@@ -32,14 +32,14 @@
 ### 使用步骤
 
 #### 方法一：双击运行（推荐）
-1. [下载本仓库 Zip 压缩包](https://github.com/) 并解压到本地任意目录；
+1. [下载本仓库 Zip 压缩包](https://github.com/708882134/Antigravity-Mac-HanHua/archive/refs/heads/main.zip) 并解压到本地任意目录；
 2. 在访达（Finder）中直接双击 **`一键汉化.command`**；
 3. 按照提示输入数字 `1`，等待约 10~30 秒提示完成；
 4. **完全退出软件**（在运行中的应用窗口按键盘 **`Cmd + Q`**），重新启动即可！
 
 #### 方法二：终端命令行运行
 ```bash
-git clone https://github.com/your-username/Antigravity-Mac-HanHua.git
+git clone https://github.com/708882134/Antigravity-Mac-HanHua.git
 cd Antigravity-Mac-HanHua
 
 # 运行交互菜单
