@@ -159,8 +159,16 @@ def localize_app(npx, app_path, engine_final, data):
     # 2. 解包
     work_dir = tempfile.mkdtemp(prefix="agy_mac_")
     extract_dir = os.path.join(work_dir, "x")
+    work_asar = os.path.join(work_dir, "app.asar")
+    shutil.copy2(bak_path, work_asar)
+    unpacked_orig = os.path.join(resources_dir, "app.asar.unpacked")
+    if os.path.exists(unpacked_orig):
+        try:
+            os.symlink(unpacked_orig, os.path.join(work_dir, "app.asar.unpacked"))
+        except Exception:
+            pass
     log("正在解包官方原版 app.asar ...")
-    subprocess.run([npx, "--yes", "@electron/asar", "extract", bak_path, extract_dir], check=True, capture_output=True)
+    subprocess.run([npx, "--yes", "@electron/asar", "extract", work_asar, extract_dir], check=True, capture_output=True)
 
     # 3. 注入
     # dist/preload.js
