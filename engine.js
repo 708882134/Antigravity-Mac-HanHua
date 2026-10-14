@@ -457,7 +457,20 @@
         }
     } catch (_) {}
 
+    // macOS 窗口拖拽保护补丁（防止文本选择干扰拖动）
+    function injectDragFix() {
+        try {
+            if (document.getElementById('__agy_drag_fix__')) return;
+            var style = document.createElement('style');
+            style.id = '__agy_drag_fix__';
+            style.textContent = '[style*="app-region: drag"], [style*="-webkit-app-region: drag"] { -webkit-app-region: drag !important; -webkit-user-select: none !important; user-select: none !important; } button, a, input, select, textarea, [role="button"], svg { -webkit-app-region: no-drag !important; }';
+            var target = document.head || document.documentElement;
+            if (target) target.appendChild(style);
+        } catch (_) {}
+    }
+
     function startObserver() {
+        injectDragFix();
         safeScan();
         // 渐进式多阶挂载兜底（托盘唤醒/异步组件挂载延迟）
         var delays = [50, 150, 400, 1000, 2500];
