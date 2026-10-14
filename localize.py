@@ -174,13 +174,15 @@ def localize_app(npx, app_path, engine_final, data):
     # dist/preload.js
     p = os.path.join(extract_dir, "dist", "preload.js")
     if os.path.exists(p):
-        open(p, 'w', encoding='utf-8').write(inject_engine(open(p, encoding='utf-8').read(), engine_final))
+        orig_content = open(p, encoding='utf-8').read()
+        open(p, 'w', encoding='utf-8').write(inject_engine(orig_content, engine_final))
         log("已注入 dist/preload.js 核心翻译引擎", ok=True)
 
     # dist/ideInstall/wizardPreload.js
     p = os.path.join(extract_dir, "dist", "ideInstall", "wizardPreload.js")
     if os.path.exists(p):
-        open(p, 'w', encoding='utf-8').write(inject_engine(open(p, encoding='utf-8').read(), engine_final))
+        orig_content = open(p, encoding='utf-8').read()
+        open(p, 'w', encoding='utf-8').write(inject_engine(orig_content, engine_final))
         log("已注入安装向导翻译", ok=True)
 
     # dist/menu.js
